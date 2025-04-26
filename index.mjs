@@ -32,6 +32,7 @@ app.get("/chess/seed", async (req, res) => {
         draw: false,
         winner: "Ding Liren",
         info: "2024 FIDE World Championship Game 1",
+        opening: "Advance French",
       },
     ]);
     res.redirect("/chess");
