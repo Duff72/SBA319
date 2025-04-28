@@ -34,6 +34,14 @@ app.get("/chess/seed", async (req, res) => {
         info: "2024 FIDE World Championship Game 1",
         opening: "Advance French",
       },
+      {
+        white: "Magnus Carlsen",
+        black: "Ian Nepomniachtchi",
+        draw: false,
+        winner: "Magnus Carlsen",
+        info: "2021 World Chess Championship Game 6",
+        opening: "Catalan",
+      },
     ]);
     res.redirect("/chess");
   } catch (error) {
@@ -68,16 +76,7 @@ app.delete("/chess/:id", async (req, res) => {
 // Update - Update an existing game by id
 app.put("/chess/:id", async (req, res) => {
   try {
-    if (req.body.readyToEat === "on") {
-      //if checked, req.body.readyToEat is set to 'on'
-      req.body.readyToEat = true; //do some data correction
-    } else {
-      //if not checked, req.body.readyToEat is undefined
-      req.body.readyToEat = false; //do some data correction
-    }
-    // fruits.push(req.body);
-    await Fruit.findByIdAndUpdate(req.params.id, req.body);
-
+    await Chess.findByIdAndUpdate(req.params.id, req.body);
     res.redirect("/chess");
   } catch (error) {
     console.log(error);

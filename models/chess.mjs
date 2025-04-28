@@ -6,8 +6,9 @@ const chessSchema = new mongoose.Schema({
   draw: { type: Boolean, required: true },
   winner: { type: String },
   info: { type: String },
+  opening: { type: String },
 });
 
-const Chess = mongoose.model("Chess", fruitSchema);
+const Chess = mongoose.model("Chess", chessSchema);
 
 export default Chess;
